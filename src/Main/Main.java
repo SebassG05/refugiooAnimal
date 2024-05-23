@@ -17,7 +17,6 @@ public class Main {
         
         IniciarSesion iniciarSesion = new IniciarSesion();
         
-        iniciarSesion.setSize(700,500);
         
         iniciarSesion.setVisible(true);
 

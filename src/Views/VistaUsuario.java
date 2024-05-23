@@ -4,6 +4,9 @@
  */
 package Views;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sebas
@@ -34,7 +37,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btnApadrinar = new javax.swing.JButton();
+        btnSuerte = new javax.swing.JButton();
         btnReseña = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         btnAnimales = new javax.swing.JButton();
@@ -52,12 +55,12 @@ public class VistaUsuario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 255, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnApadrinar.setBackground(new java.awt.Color(255, 255, 204));
-        btnApadrinar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnApadrinar.setText("APADRINAR");
-        btnApadrinar.addActionListener(new java.awt.event.ActionListener() {
+        btnSuerte.setBackground(new java.awt.Color(255, 255, 204));
+        btnSuerte.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSuerte.setText("SUERTE");
+        btnSuerte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApadrinarActionPerformed(evt);
+                btnSuerteActionPerformed(evt);
             }
         });
 
@@ -96,7 +99,7 @@ public class VistaUsuario extends javax.swing.JFrame {
                         .addGap(167, 167, 167)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnReseña, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(btnApadrinar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(btnSuerte, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                             .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(186, 186, 186)
@@ -107,7 +110,7 @@ public class VistaUsuario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(btnApadrinar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSuerte, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btnReseña, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
@@ -166,6 +169,7 @@ public class VistaUsuario extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         Registrar rg = new Registrar();
        rg.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void btnAnimalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalesActionPerformed
@@ -174,9 +178,16 @@ public class VistaUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAnimalesActionPerformed
 
-    private void btnApadrinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApadrinarActionPerformed
-     
-    }//GEN-LAST:event_btnApadrinarActionPerformed
+    private void btnSuerteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuerteActionPerformed
+     VistaSuerte vs = null;
+        try {
+            vs = new VistaSuerte();
+        } catch (Exception ex) {
+            Logger.getLogger(VistaUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        vs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSuerteActionPerformed
 
     private void btnReseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReseñaActionPerformed
         ReseñaVista ev = new ReseñaVista();
@@ -191,8 +202,8 @@ public class VistaUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnimales;
-    private javax.swing.JButton btnApadrinar;
     private javax.swing.JButton btnReseña;
+    private javax.swing.JButton btnSuerte;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

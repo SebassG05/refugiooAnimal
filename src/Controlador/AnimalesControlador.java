@@ -14,10 +14,12 @@ import java.util.List;
 public class AnimalesControlador {
     
     private AnimalesServicio mostrarAnimal;
+    private boolean haProbadoSuerte;
     
     public AnimalesControlador(){
         
         mostrarAnimal = new AnimalesServicio();
+        haProbadoSuerte = false;
     }
     
     public List<AnimalModel> MostrarAnimales(){
@@ -73,5 +75,24 @@ public class AnimalesControlador {
    
         return mostrarAnimal.RegistrarDefuncion(nombreAnimal);
    }
+   
+   public void mostrarAnimales() throws Exception {
+        
+    }
+   
+   public boolean ProbarSuerte(String nombreAnimal) throws SQLException
+   {
+   
+       if (haProbadoSuerte) {
+            return false;  
+        } else {
+            haProbadoSuerte = true;  
+            return mostrarAnimal.ProbarSuerte(nombreAnimal);
+        }
+   }
+   
+   public boolean HaProbadoSuerte() {
+        return haProbadoSuerte;
+    }
 }
 

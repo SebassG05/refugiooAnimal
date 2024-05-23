@@ -1,0 +1,57 @@
+DROP FUNCTION IF EXISTS mes_en_Letras;
+
+DELIMITER //
+CREATE FUNCTION mes_en_Letras(mes_numero INT) RETURNS VARCHAR(20)
+BEGIN
+DECLARE resultado VARCHAR(20);
+
+IF mes_numero < 1 OR mes_numero > 12 THEN
+RETURN 'NO';
+END IF;
+
+CASE mes_numero
+WHEN 1 THEN SET resultado = 'enero';
+WHEN 2 THEN SET resultado = 'febrero';
+WHEN 3 THEN SET resultado = 'marzo';
+WHEN 4 THEN SET resultado = 'abril';
+WHEN 5 THEN SET resultado = 'mayo';
+WHEN 6 THEN SET resultado = 'junio';
+WHEN 7 THEN SET resultado = 'julio';
+WHEN 8 THEN SET resultado = 'agosto';
+WHEN 9 THEN SET resultado = 'septiembre';
+WHEN 10 THEN SET resultado = 'octubre';
+WHEN 11 THEN SET resultado = 'noviembre';
+WHEN 12 THEN SET resultado = 'diciembre';
+
+END CASE ;
+
+RETURN resultado ;
+END //
+DELIMITER ;
+
+SELECT mes_en_Letras(5);
+
+--------------------------------------------------------
+
+DROP FUNCTION IF EXISTS numero_pedidos;
+
+DELIMITER //
+CREATE FUNCTION numero_pedidos(anno INT, mes INT)
+RETURNS INT
+BEGIN
+DECLARE cuenta INT;
+SELECT COUNT(*) INTO cuenta FROM pedido WHERE year(fecha_pedido) = anno AND month(fecha_pedido) = mes;
+RETURN cuenta;
+END //
+DELIMITER ; 
+
+Select numero_pedidos(2006,01);
+
+---------------------------------------------------------
+
+CREATE TABLE auditoria_pago(
+id_auditoria INT AUTO_INCREMENT PRIMARY KEY,
+codigo_cliente INT(11),
+accion ENUM("INSERT", "UPDATE", "DELETE"),
+fecha_accion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

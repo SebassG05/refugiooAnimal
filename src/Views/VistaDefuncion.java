@@ -27,6 +27,8 @@ public class VistaDefuncion extends javax.swing.JFrame {
         initComponents();
 
         animalesS.mostrarAnimalesDefComboBox("animal", "nombre", jComboBox1);
+         setLocationRelativeTo(null);
+            setResizable(false);
     }
 
     /**

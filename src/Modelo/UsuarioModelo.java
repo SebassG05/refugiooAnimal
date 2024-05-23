@@ -17,7 +17,7 @@ public class UsuarioModelo {
     private String contraseña;
     private int edad;
 
-    public UsuarioModelo(String nombre, String email, String contraseña, int edad, int Id) {
+    public UsuarioModelo(String nombre, String email, int edad, String contraseña) {
         this.nombre = nombre;
         this.email = email;
         this.contraseña = contraseña;

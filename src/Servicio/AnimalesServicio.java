@@ -8,6 +8,7 @@ import Modelo.AnimalModel;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -18,6 +19,29 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class AnimalesServicio {
+    
+    private String animalSeleccionadoPorMaquina;
+    
+    public AnimalesServicio(){
+        seleccionarAnimalAleatorio();
+    }
+    
+    private void seleccionarAnimalAleatorio() {
+        try {
+            List<String> animales = new ArrayList<>();
+            ResultSet rs = Conexion.EjecutarSentencia("SELECT nombre FROM animal");
+            while (rs.next()) {
+                animales.add(rs.getString("nombre"));
+            }
+            animalSeleccionadoPorMaquina = animales.get(new Random().nextInt(animales.size()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public boolean ProbarSuerte(String nombreAnimal) {
+        return nombreAnimal.equals(animalSeleccionadoPorMaquina);
+    }
     
     public List<AnimalModel> MostrarAnimales(){
         
@@ -299,6 +323,19 @@ public class AnimalesServicio {
         }
     }
     
+    public void mostrarAnimales(String tabla, String nombre, JComboBox jComboBox1) throws Exception{
+        
+        try{
+            ResultSet rs = Conexion.EjecutarSentencia("SELECT * FROM animal");
+            
+            while(rs.next()){
+                jComboBox1.addItem(rs.getString(nombre));
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "ERROR EN SERVICIO");
+        }
+    }
+    
     public boolean ApadrinarAnimalHer(String nombreAnimal) {
     try {
         Conexion.EjecutarUpdate("UPDATE animal SET apadrinado = 'SI' WHERE nombre = '" +nombreAnimal +"';");
@@ -328,6 +365,8 @@ public class AnimalesServicio {
         return false;
     }
     }
+    
+    
 }
         
 
